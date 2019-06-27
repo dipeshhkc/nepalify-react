@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './nepali-mapping';
 
-export class nepali extends Component {
+export class Nepali extends Component {
   constructor() {
     super();
     this.state = {
@@ -40,4 +40,4 @@ export class nepali extends Component {
   }
 }
 
-export default nepali;
+export default Nepali;
