@@ -24,7 +24,14 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.5.1"
   },
-  "keywords": [],
+  "keywords": [
+    "unicode-nepali",
+    "preeti",
+    "nepalify",
+    "nepali-keyboard-react",
+    "traditional-preeti",
+    "romanized-unicode"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
