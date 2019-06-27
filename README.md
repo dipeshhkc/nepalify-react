@@ -2,7 +2,7 @@
 <h2> Key mapping to Preeti font and Unicode </h2> 
 
 <h2>  Usage: </h2>
-__Uses  '@material-ui/core/TextField' for textfield__
+\Uses  '@material-ui/core/TextField' for textfield\
 
 
     import React, { Component, Fragment } from 'react';
