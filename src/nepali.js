@@ -26,6 +26,7 @@ export class Nepali extends Component {
       <input
         onChange={ this.calculate.bind(this) }
         value={this.state.value}
+        { ...this.props }
       />
     );
   }
