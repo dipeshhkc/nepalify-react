@@ -4,7 +4,7 @@
 ![Loading1](https://raw.githubusercontent.com/dipesh429/Nepalify-React/master/screenshot/unicode1.png)
 ![Loading2](https://raw.githubusercontent.com/dipesh429/Nepalify-React/master/screenshot/unicode2.png)
 
-<h2> Download using npm </h2>
+<h2> Download using npm (https://www.npmjs.com/package/nepalify-react) </h2>
 
     npm i nepalify-react
 
