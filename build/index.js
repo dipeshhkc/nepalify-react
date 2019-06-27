@@ -209,7 +209,7 @@ module.exports = require("react");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.nepali = undefined;
+exports.Nepali = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -227,13 +227,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var nepali = exports.nepali = function (_Component) {
-  _inherits(nepali, _Component);
+var Nepali = exports.Nepali = function (_Component) {
+  _inherits(Nepali, _Component);
 
-  function nepali() {
-    _classCallCheck(this, nepali);
+  function Nepali() {
+    _classCallCheck(this, Nepali);
 
-    var _this = _possibleConstructorReturn(this, (nepali.__proto__ || Object.getPrototypeOf(nepali)).call(this));
+    var _this = _possibleConstructorReturn(this, (Nepali.__proto__ || Object.getPrototypeOf(Nepali)).call(this));
 
     _this.state = {
       value: ''
@@ -241,49 +241,55 @@ var nepali = exports.nepali = function (_Component) {
     return _this;
   }
 
-  _createClass(nepali, [{
-    key: 'KeyPress',
-    value: function KeyPress(e) {
-      var key = e.which;
-      var a = window[this.props.funcname](e.which);
-      this.setState(function (prev) {
-        return {
-          value: prev.value + a
-        };
-      });
-    }
-  }, {
-    key: 'KeyDown',
-    value: function KeyDown(e) {
-      if (e.key == 'Backspace') {
-        this.setState(function (prev) {
-          return {
-            value: prev.value.substring(0, prev.value.length - 1)
-          };
-        });
+  _createClass(Nepali, [{
+    key: 'calculate',
+    value: function calculate(e) {
+      var value = "";
+      if (this.state.value !== e.target.value) {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = e.target.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var c = _step.value;
+
+            var conv_char = window[this.props.funcname](c.charCodeAt(0));
+            value += conv_char || c;
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+
+        this.setState({ value: value });
+        this.props.valueChange && this.props.valueChange(e, value);
       }
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return _react2.default.createElement('input', {
-        value: this.state.value,
-        onKeyPress: function onKeyPress(e) {
-          return _this2.KeyPress(e);
-        },
-        onKeyDown: function onKeyDown(e) {
-          return _this2.KeyDown(e);
-        }
+        onChange: this.calculate.bind(this),
+        value: this.state.value
       });
     }
   }]);
 
-  return nepali;
+  return Nepali;
 }(_react.Component);
 
-exports.default = nepali;
+exports.default = Nepali;
 
 /***/ })
 /******/ ]);

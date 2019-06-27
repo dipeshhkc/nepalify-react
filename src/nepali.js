@@ -9,32 +9,23 @@ export class Nepali extends Component {
     };
   }
 
-  KeyPress(e) {
-    let key = e.which;
-    let a = window[this.props.funcname](e.which);
-    this.setState(prev => {
-      return {
-        value: prev.value + a
-      };
-    });
-  }
-
-  KeyDown(e) {
-    if (e.key == 'Backspace') {
-      this.setState(prev => {
-        return {
-          value: prev.value.substring(0, prev.value.length - 1)
-        };
-      });
+  calculate(e){
+    let value = "";
+    if(this.state.value !== e.target.value){
+      for(let c of e.target.value){
+        let conv_char = window[this.props.funcname](c.charCodeAt(0));
+        value += conv_char || c;
+      }
+      this.setState({ value });
+      this.props.valueChange && this.props.valueChange(e, value);
     }
   }
 
   render() {
     return (
       <input
+        onChange={ this.calculate.bind(this) }
         value={this.state.value}
-        onKeyPress={e => this.KeyPress(e)}
-        onKeyDown={e => this.KeyDown(e)}
       />
     );
   }
