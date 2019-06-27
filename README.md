@@ -1,5 +1,5 @@
-# Nepalify-React
-Key mapping to Preeti font and Unicode
+<h1> # Nepalify-React
+Key mapping to Preeti font and Unicode </h1>
 
 Usage:
 
