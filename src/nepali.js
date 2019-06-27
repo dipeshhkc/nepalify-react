@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './nepali-mapping';
 
-
 export class nepali extends Component {
-  state = {
-    value: ''
-  };
+  constructor() {
+    super();
+    this.state = {
+      value: ''
+    };
+  }
 
   KeyPress(e) {
     let key = e.which;
@@ -29,10 +31,10 @@ export class nepali extends Component {
 
   render() {
     return (
-      <input    
+      <input
         value={this.state.value}
         onKeyPress={e => this.KeyPress(e)}
-        onKeyDown={e => this.KeyDown(e)}       
+        onKeyDown={e => this.KeyDown(e)}
       />
     );
   }

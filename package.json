@@ -1,0 +1,34 @@
+{
+  "name": "nepalify-react",
+  "version": "1.0.0",
+  "description": "<h1> # nepalify-react </h1> <h2> Key mapping to Preeti font and Unicode </h2>",
+  "main": "nepali.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "webpack": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dipesh429/Nepalify.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dipesh429/Nepalify/issues"
+  },
+  "homepage": "https://github.com/dipesh429/Nepalify#readme"
+}
