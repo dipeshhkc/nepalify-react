@@ -11,18 +11,18 @@ React library to key map to preeti or unicode. This library provides an `<input 
 #### Usage:
 ```
 import React, { Component, Fragment } from 'react';
-    import Nepali from 'nepalify-react';
+import Nepali from 'nepalify-react';
     
-    export class App extends Component {
-      render() {
-        return (
-          <Fragment>
-            <Nepali funcname="preetify" />  //For Preeti mapping
-            <Nepali funcname="unicodify" />  //For Unicode mapping
-          </Fragment>
-        );
-      }
-    }
+export class App extends Component {
+  render() {
+    return (
+      <Fragment>
+        <Nepali funcname="preetify" />  //For Preeti mapping
+        <Nepali funcname="unicodify" />  //For Unicode mapping
+      </Fragment>
+    );
+  }
+}
 ```
 
 #### API Details:
