@@ -1,8 +1,12 @@
 <h1> # nepalify-react </h1>
 <h2> Key mapping to Preeti font and Unicode </h2>
 
-![Loading1](https://github.com/dipesh429/Nepalify-React/blob/master/screenshot/unicode1.png)
-![Loading2](https://github.com/dipesh429/Nepalify-React/blob/master/screenshot/unicode2.png)
+![Loading1](https://raw.githubusercontent.com/dipesh429/Nepalify-React/master/screenshot/unicode1.png)
+![Loading2](https://raw.githubusercontent.com/dipesh429/Nepalify-React/master/screenshot/unicode2.png)
+
+<h2> Download using npm </h2>
+
+    npm i nepalify-react
 
 <h2>  Usage: </h2>
 
