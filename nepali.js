@@ -29,7 +29,7 @@ export class nepali extends Component {
 
   render() {
     return (
-      <Input    
+      <input    
         value={this.state.value}
         onKeyPress={e => this.KeyPress(e)}
         onKeyDown={e => this.KeyDown(e)}       
