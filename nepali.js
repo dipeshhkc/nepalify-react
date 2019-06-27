@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './nepali-mapping';
-import TextField from '@material-ui/core/TextField';
+
 
 export class nepali extends Component {
   state = {
@@ -29,14 +29,10 @@ export class nepali extends Component {
 
   render() {
     return (
-      <TextField
-        id="outlined-name"
-        label={this.props.funcname}
+      <input    
         value={this.state.value}
         onKeyPress={e => this.KeyPress(e)}
-        onKeyDown={e => this.KeyDown(e)}
-        margin="normal"
-        variant="outlined"
+        onKeyDown={e => this.KeyDown(e)}       
       />
     );
   }
