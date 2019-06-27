@@ -11,7 +11,7 @@
     import React, { Component, Fragment } from 'react';
     import Nepali from 'location of nepali.js';
 
-    export class Hello extends Component {
+    export class (YourClassName) extends Component {
       render() {
         return (
           <Fragment>
