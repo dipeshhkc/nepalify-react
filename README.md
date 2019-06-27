@@ -15,8 +15,8 @@
       render() {
         return (
           <Fragment>
-            <Nepali funcname="preetify" /> *//For Preeti mapping*
-            <Nepali funcname="unicodify" /> *//For Unicode mapping*
+            <Nepali funcname="preetify" /> //For Preeti mapping
+            <Nepali funcname="unicodify" /> //For Unicode mapping
           </Fragment>
         );
       }
