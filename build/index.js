@@ -246,7 +246,8 @@ var Nepali = exports.Nepali = function (_Component) {
   _createClass(Nepali, [{
     key: 'calculate',
     value: function calculate(e) {
-      var value = "";
+      var value = '';
+      console.log(e.target);
       if (this.state.value !== e.target.value) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -256,6 +257,7 @@ var Nepali = exports.Nepali = function (_Component) {
           for (var _iterator = e.target.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var c = _step.value;
 
+            console.log(c.charCodeAt(0));
             var conv_char = window[this.props.funcname](c.charCodeAt(0));
             value += conv_char || c;
           }
@@ -281,10 +283,14 @@ var Nepali = exports.Nepali = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('input', _extends({
-        onChange: this.calculate.bind(this),
-        value: this.state.value
-      }, this.props));
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement('textarea', _extends({
+          onChange: this.calculate.bind(this),
+          value: this.state.value
+        }, this.props))
+      );
     }
   }]);
 
