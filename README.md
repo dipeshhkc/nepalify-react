@@ -26,7 +26,11 @@ export class App extends Component {
 ```
 
 #### API Details:
-| Props         | Value                                      | Description                                                                                |
-|---------------|--------------------------------------------|--------------------------------------------------------------------------------------------|
-| `funcname`    | `preetify` or `unicodify`                  | Which type of key mapping to use. Traditional Unicode mapping or Romanized Unicode Mapping |
-| `valueChange` |  callback function. `(event, value) => {}` | callback function to call instead of react's `onChange` function                           |
+| Props         | Value                                       | Description                                                                                |
+|---------------|---------------------------------------------|--------------------------------------------------------------------------------------------|
+| `funcname`    | `preetify` or `unicodify`                   | Which type of key mapping to use. Traditional Unicode mapping or Romanized Unicode Mapping |
+| `valueChange` |  callback function. `(event, value) => {}`  | callback function to call instead of react's `onChange` function                           |
+| `inputType`   |  `textarea` or `text`, defaultValue: `text` | type of the input field to apply react nepalify for                                        |
+
+#### Note:
+You can add other props as per your requirements except given in `API` which will be passed to underlying input element. 
