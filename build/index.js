@@ -370,8 +370,13 @@ var Nepali = exports.Nepali = function (_Component) {
           for (var _iterator = e.target.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var c = _step.value;
 
-            var conv_char = _nepaliMapping.mappingFunction[this.props.funcname](c.charCodeAt(0));
-            value += conv_char || c;
+            try {
+              var conv_char = _nepaliMapping.mappingFunction[this.props.funcname](c.charCodeAt(0));
+              value += conv_char || c;
+            } catch (e) {
+              var _conv_char = _nepaliMapping.mappingFunction.unicodify(c.charCodeAt(0));
+              value += _conv_char || c;
+            }
           }
         } catch (err) {
           _didIteratorError = true;
@@ -393,12 +398,14 @@ var Nepali = exports.Nepali = function (_Component) {
         this.props.valueChange && this.props.valueChange(e, value);
       }
     }
+
+    // don't override event instead let event play and then 
+    // set the selection range after 10ms, bit hacky but works
+
   }, {
     key: 'adjustCursor',
     value: function adjustCursor(inputRef) {
       var selectionStart = inputRef.selectionStart;
-      // don't override event instead let event play and then 
-      // set the selection range after 10ms, bit hacky but works
       setTimeout(function () {
         inputRef.setSelectionRange(selectionStart, selectionStart);
       }, 10);
