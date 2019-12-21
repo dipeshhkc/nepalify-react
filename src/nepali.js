@@ -10,8 +10,9 @@ export class Nepali extends Component {
   }
 
   calculate(e) {
+
     let value = "";
-    e.persist();
+    
     if (this.state.value !== e.target.value) {
       for (let c of e.target.value) {
         try {
@@ -21,6 +22,7 @@ export class Nepali extends Component {
           const conv_char = mappingFunction.unicodify(c.charCodeAt(0));
           value += conv_char || c;
         }
+
       }
       this.setState({ value });
       this.adjustCursor(e.target);
@@ -38,6 +40,7 @@ export class Nepali extends Component {
   }
 
   render() {
+
     const { inputType, initialValue, ...props } = this.props;
     return inputType === 'textarea' ? (
       <textarea
@@ -51,6 +54,7 @@ export class Nepali extends Component {
           value={this.state.value}
         />
       );
+
   }
 }
 

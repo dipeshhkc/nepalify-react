@@ -1,7 +1,7 @@
 {
   "name": "nepalify-react",
-  "version": "1.0.3",
-  "description": "<h1> # nepalify-react </h1> <h2> Key mapping to Preeti font and Unicode </h2>",
+  "version": "1.0.4",
+  "description": "React Component : Key mapping to Preeti font and Unicode",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

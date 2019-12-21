@@ -359,8 +359,9 @@ var Nepali = exports.Nepali = function (_Component) {
   _createClass(Nepali, [{
     key: 'calculate',
     value: function calculate(e) {
-      var value = "";
-      e.persist();
+
+      var value = '';
+
       if (this.state.value !== e.target.value) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -377,6 +378,7 @@ var Nepali = exports.Nepali = function (_Component) {
               var _conv_char = _nepaliMapping.mappingFunction.unicodify(c.charCodeAt(0));
               value += _conv_char || c;
             }
+
           }
         } catch (err) {
           _didIteratorError = true;
@@ -413,6 +415,7 @@ var Nepali = exports.Nepali = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+
       var _props = this.props,
           inputType = _props.inputType,
           initialValue = _props.initialValue,
@@ -424,6 +427,7 @@ var Nepali = exports.Nepali = function (_Component) {
         onChange: this.calculate.bind(this),
         value: this.state.value
       }));
+
     }
   }]);
 
