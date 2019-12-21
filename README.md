@@ -26,7 +26,7 @@ export class App extends Component {
 ```
 
 #### API Details:
-| Props          | Value                                     | Default      | Description                                                                                |   |
+| Props          | Value                                     | Default      | Description                                                                                |
 |----------------|-------------------------------------------|--------------|--------------------------------------------------------------------------------------------|
 | `funcname`     | `preetify` or `unicodify`                 | `unicodify`  | Which type of key mapping to use. Traditional Unicode mapping or Romanized Unicode Mapping |
 | `valueChange`  | callback function. `(event, value) => {}` | `null`       | callback function to call instead of react's `onChange` function                           |
