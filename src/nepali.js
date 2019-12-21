@@ -14,8 +14,13 @@ export class Nepali extends Component {
     e.persist();
     if (this.state.value !== e.target.value) {
       for (let c of e.target.value) {
-        let conv_char = mappingFunction[this.props.funcname](c.charCodeAt(0));
-        value += conv_char || c;
+        try {
+          const conv_char = mappingFunction[this.props.funcname](c.charCodeAt(0));
+          value += conv_char || c;
+        } catch (e) {
+          const conv_char = mappingFunction.unicodify(c.charCodeAt(0));
+          value += conv_char || c;
+        }
       }
       this.setState({ value });
       this.adjustCursor(e.target);
@@ -23,10 +28,10 @@ export class Nepali extends Component {
     }
   }
 
+  // don't override event instead let event play and then 
+  // set the selection range after 10ms, bit hacky but works
   adjustCursor(inputRef) {
     const selectionStart = inputRef.selectionStart;
-    // don't override event instead let event play and then 
-    // set the selection range after 10ms, bit hacky but works
     setTimeout(() => {
       inputRef.setSelectionRange(selectionStart, selectionStart);
     }, 10);
