@@ -415,7 +415,8 @@ var Nepali = exports.Nepali = function (_Component) {
     value: function render() {
       var _props = this.props,
           inputType = _props.inputType,
-          props = _objectWithoutProperties(_props, ['inputType']);
+          initialValue = _props.initialValue,
+          props = _objectWithoutProperties(_props, ['inputType', 'initialValue']);
 
       return inputType === 'textarea' ? _react2.default.createElement('textarea', _extends({}, props, {
         onChange: this.calculate.bind(this),

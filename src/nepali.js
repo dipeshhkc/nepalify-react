@@ -38,7 +38,7 @@ export class Nepali extends Component {
   }
 
   render() {
-    const { inputType, ...props } = this.props;
+    const { inputType, initialValue, ...props } = this.props;
     return inputType === 'textarea' ? (
       <textarea
         {...props}
