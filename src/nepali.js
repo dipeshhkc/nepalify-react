@@ -1,38 +1,60 @@
 import React, { Component } from 'react';
-import './nepali-mapping';
+import { mappingFunction } from './nepali-mapping';
 
 export class Nepali extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      value: ''
+      value: this.props.initialValue || ''
     };
   }
 
   calculate(e) {
-    let value = '';
-    console.log(e.target);
+
+    let value = "";
+    
     if (this.state.value !== e.target.value) {
       for (let c of e.target.value) {
-        console.log(c.charCodeAt(0));
-        let conv_char = window[this.props.funcname](c.charCodeAt(0));
-        value += conv_char || c;
+        try {
+          const conv_char = mappingFunction[this.props.funcname](c.charCodeAt(0));
+          value += conv_char || c;
+        } catch (e) {
+          const conv_char = mappingFunction.unicodify(c.charCodeAt(0));
+          value += conv_char || c;
+        }
+
       }
       this.setState({ value });
+      this.adjustCursor(e.target);
       this.props.valueChange && this.props.valueChange(e, value);
     }
   }
 
+  // don't override event instead let event play and then 
+  // set the selection range after 10ms, bit hacky but works
+  adjustCursor(inputRef) {
+    const selectionStart = inputRef.selectionStart;
+    setTimeout(() => {
+      inputRef.setSelectionRange(selectionStart, selectionStart);
+    }, 10);
+  }
+
   render() {
-    return (
-      <div>
+
+    const { inputType, initialValue, ...props } = this.props;
+    return inputType === 'textarea' ? (
+      <textarea
+        {...props}
+        onChange={this.calculate.bind(this)}
+        value={this.state.value} ></textarea>
+    ) : (
         <input
+          {...props}
           onChange={this.calculate.bind(this)}
           value={this.state.value}
-          {...this.props}
         />
-      </div>
-    );
+      );
+
   }
 }
 

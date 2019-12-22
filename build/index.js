@@ -74,7 +74,11 @@ module.exports =
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //there are total 95 characters generating keys i.e (fired by keypress event) 32 to 126
+
 var unicode = [' ', // SPACE
 '!', // ! -> !
 '"', // " -> "
@@ -178,7 +182,105 @@ var unicode = [' ', // SPACE
 '\u093C' // ~ -> "़"
 ];
 
-var preeti = [' ', '\u0967', '\u0942', '\u0969', '\u096A', '\u096B', '\u096D', '\u0941', '\u096F', '\u0966', '\u096E', '\u0971', ',', '(', '\u0964', '\u0930', '\u0923', '\u091C' + '\u094D' + '\u091E', '\u0926' + '\u094D' + '\u0926', '\u0918', '\u0926' + '\u094D' + '\u0927', '\u091B', '\u091F', '\u0920', '\u0921', '\u0922', '\u0938' + '\u094D', '\u0938', '?', '\u0902', '\u0936' + '\u094D' + '\u0930', '\u0930' + '\u0942', '\u0968', '\u092C' + '\u094D', '\u0926' + '\u094D' + '\u092F', '\u090B', '\u092E' + '\u094D', '\u092D' + '\u094D', '\u0901', '\u0928' + '\u094D', '\u091C' + '\u094D', '\u0915' + '\u094D' + '\u0937' + '\u094D', '\u0935' + '\u094D', '\u092A' + '\u094D', '\u0940', ':', '\u0932' + '\u094D', '\u0907', '\u090F', '\u0924' + '\u094D' + '\u0924', '\u091A' + '\u094D', '\u0915' + '\u094D', '\u0924' + '\u094D', '\u0917' + '\u094D', '\u0916' + '\u094D', '\u0927' + '\u094D', '\u0939' + '\u094D', '\u0925' + '\u094D', '\u0936' + '\u094D', '\u0943', '\u094D', '\u0947', '\u096C', ')', '\u091E', '\u092C', '\u0926', '\u0905', '\u092E', '\u092D', '\u093E', '\u0928', '\u091C', '\u0937' + '\u094D', '\u0935', '\u092A', '\u093F', '\u093D', '\u0932', '\u092F', '\u0909', '\u0924' + '\u094D' + '\u0930', '\u091A', '\u0915', '\u0924', '\u0917', '\u0916', '\u0927', '\u0939', '\u0925', '\u0936', '\u0930' + '\u094D', '\u094D' + '\u0930', '\u0948', '\u091E' + '\u094D'];
+var preeti = [' ', // [space]
+'\u091C' + '\u094D' + '\u091E', // ! -> ज्ञ
+'\u0942', // " -> ू
+'\u0918', // #-> घ
+'\u0926' + '\u094D' + '\u0927', // $-> टु
+'\u091B', // %-> छ
+'\u0920', // &-> ठ
+'\u0941', // '-> ु
+'\u0922', // (-> ढ
+'\u0923', // )-> ण
+'\u0921', // *-> ड
+'\u200C', // + -> ZWNJ
+'\u093D', // ,-> ऽ
+'\u0914', // --> औ
+'\u0964', // .-> ।
+'\u0930', // /-> र
+
+'\u0966', // 0-> ०
+'\u0967', // 1-> १
+'\u0968', // 2-> २
+'\u0969', // 3->३
+'\u096A', // 4->४
+'\u096B', // 5->५
+'\u096C', // 6->६
+'\u096D', // 7->७
+'\u096E', // 8->८
+'\u096F', // 9->९
+
+'\u091F' + '\u094D' + '\u0920', // :->ट्ठ
+'\u0938', // ;->स
+'\u0919', // <->ङ
+'\u200D', // = -> ZWJ
+'\u0936' + '\u094D' + '\u0930', // >->श्र
+'\u0930' + '\u0941', // ?->रु
+'\u0908', // @->ई
+
+'\u0906', // A->आ
+'\u094C', // B-> ौ
+'\u090B', // C->ऋ
+'\u0919' + '\u094D' + '\u0917', // D -> ङ्ग
+'\u0910', // E->ऐ
+'\u0901', // F-> ँ
+'\u0926' + '\u094D' + '\u0927', // G->द्ध
+'\u091D', // H->झ
+'\u0915' + '\u094D' + '\u0937', // I->क्ष
+'\u094B', // J->ो
+'\u092B', // K->फ
+'\u0940', // L->
+'\u0921' + '\u094D' + '\u0921', // M->ड्ड
+'\u0926' + '\u094D' + '\u092F', // N->द्य
+'\u0907', // O->इ
+'\u090F', // P->ए
+'\u0924' + '\u094D' + '\u0924', // Q->त्त
+'\u0926' + '\u094D' + '\u0935', // R->द्व
+'\u0919' + '\u094D' + '\u0915', // S->ङ्क
+'\u091F' + '\u094D' + '\u091F', // T->ट्ट
+'\u090A', // U->ऊ
+'\u0950', // V-> 🕉
+'\u0921' + '\u094D' + '\u0922', //W -> 
+'\u0939' + '\u094D' + '\u092F', // X->ह्य
+'\u0920' + '\u094D' + '\u0920', // Y->ठ्ठ
+'\u0915' + '\u094D' + '\u0915', // Z->क्क
+'\u0930' + '\u094D', // [->र्
+'\u094D', // \->्
+'\u0947', // ]- े
+'\u091F', // ^->ट
+'\u0913', // _-> ओ
+'\u091E', // `-> ञ
+'\u092C', // a->ब्
+'\u0926', // b->द
+'\u0905', // c->अ
+'\u092E', // d->म
+'\u092D', // e->भ
+'\u093E', // f-> ा
+'\u0928', // g->न
+'\u091C', // h->ज
+'\u0937', // i->ष
+'\u0935', // j->व
+'\u092A', // k->प
+'\u093F', // l-> ि
+'\u0903', // m->:
+'\u0932', // n->ल
+'\u092F', // o->य
+'\u0909', // p->उ
+'\u0924' + '\u094D' + '\u0930', // q->त्र
+'\u091A', // r->च
+'\u0915', // s->क
+'\u0924', // t->त
+'\u0917', // u->ग
+'\u0916', // v->ख
+'\u0927', // w->ध
+'\u0939', // x->ह
+'\u0925', // y->थ
+'\u0936', // z->श
+'\u0943', // {->ृ
+'\u0902', // |->
+'\u0948', // }->ै
+'\u0965' // ~->॥
+];
 
 // Return the unicode of the key passed
 function mapper(keyCode, array) {
@@ -191,6 +293,15 @@ window.unicodify = function (keyCode) {
 };
 window.preetify = function (keyCode) {
   return mapper(keyCode, preeti);
+};
+
+var mappingFunction = exports.mappingFunction = {
+  unicodify: function unicodify(keyCode) {
+    return mapper(keyCode, unicode);
+  },
+  preetify: function preetify(keyCode) {
+    return mapper(keyCode, preeti);
+  }
 };
 
 /***/ }),
@@ -219,9 +330,11 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(0);
+var _nepaliMapping = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -232,13 +345,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Nepali = exports.Nepali = function (_Component) {
   _inherits(Nepali, _Component);
 
-  function Nepali() {
+  function Nepali(props) {
     _classCallCheck(this, Nepali);
 
-    var _this = _possibleConstructorReturn(this, (Nepali.__proto__ || Object.getPrototypeOf(Nepali)).call(this));
+    var _this = _possibleConstructorReturn(this, (Nepali.__proto__ || Object.getPrototypeOf(Nepali)).call(this, props));
 
     _this.state = {
-      value: ''
+      value: _this.props.initialValue || ''
     };
     return _this;
   }
@@ -246,8 +359,9 @@ var Nepali = exports.Nepali = function (_Component) {
   _createClass(Nepali, [{
     key: 'calculate',
     value: function calculate(e) {
+
       var value = '';
-      console.log(e.target);
+
       if (this.state.value !== e.target.value) {
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -257,9 +371,14 @@ var Nepali = exports.Nepali = function (_Component) {
           for (var _iterator = e.target.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var c = _step.value;
 
-            console.log(c.charCodeAt(0));
-            var conv_char = window[this.props.funcname](c.charCodeAt(0));
-            value += conv_char || c;
+            try {
+              var conv_char = _nepaliMapping.mappingFunction[this.props.funcname](c.charCodeAt(0));
+              value += conv_char || c;
+            } catch (e) {
+              var _conv_char = _nepaliMapping.mappingFunction.unicodify(c.charCodeAt(0));
+              value += _conv_char || c;
+            }
+
           }
         } catch (err) {
           _didIteratorError = true;
@@ -277,20 +396,38 @@ var Nepali = exports.Nepali = function (_Component) {
         }
 
         this.setState({ value: value });
+        this.adjustCursor(e.target);
         this.props.valueChange && this.props.valueChange(e, value);
       }
+    }
+
+    // don't override event instead let event play and then 
+    // set the selection range after 10ms, bit hacky but works
+
+  }, {
+    key: 'adjustCursor',
+    value: function adjustCursor(inputRef) {
+      var selectionStart = inputRef.selectionStart;
+      setTimeout(function () {
+        inputRef.setSelectionRange(selectionStart, selectionStart);
+      }, 10);
     }
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement('textarea', _extends({
-          onChange: this.calculate.bind(this),
-          value: this.state.value
-        }, this.props))
-      );
+
+      var _props = this.props,
+          inputType = _props.inputType,
+          initialValue = _props.initialValue,
+          props = _objectWithoutProperties(_props, ['inputType', 'initialValue']);
+
+      return inputType === 'textarea' ? _react2.default.createElement('textarea', _extends({}, props, {
+        onChange: this.calculate.bind(this),
+        value: this.state.value })) : _react2.default.createElement('input', _extends({}, props, {
+        onChange: this.calculate.bind(this),
+        value: this.state.value
+      }));
+
     }
   }]);
 
