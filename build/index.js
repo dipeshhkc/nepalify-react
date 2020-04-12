@@ -382,6 +382,7 @@ var Nepali = exports.Nepali = function (_Component) {
         this.setState({ value: value });
         this.adjustCursor(event);
         event.preventDefault();
+        this.props.valueChange && this.props.valueChange(value);
       }
     }
 
@@ -401,7 +402,10 @@ var Nepali = exports.Nepali = function (_Component) {
   }, {
     key: 'changeHandler',
     value: function changeHandler(event) {
-      this.setState({ value: event.target.value });
+      console.log(event.target.value);
+      var value = event.target.value;
+      this.setState({ value: value });
+      this.props.valueChange && this.props.valueChange(value);
     }
   }, {
     key: 'render',
@@ -412,9 +416,7 @@ var Nepali = exports.Nepali = function (_Component) {
           props = _objectWithoutProperties(_props, ['inputType', 'initialValue']);
 
       return inputType === 'textarea' ? _react2.default.createElement('textarea', _extends({}, props, {
-        onChange: function onChange(e) {
-          console.log(e.target.value);
-        },
+        onChange: this.changeHandler.bind(this),
         onKeyDown: this.calculate.bind(this),
         value: this.state.value })) : _react2.default.createElement('input', _extends({}, props, {
         onChange: this.changeHandler.bind(this),

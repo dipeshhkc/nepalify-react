@@ -40,7 +40,7 @@ export class Nepali extends Component {
       this.setState({ value });
       this.adjustCursor(event);
       event.preventDefault();
-      this.props.valueChange(value);
+      this.props.valueChange && this.props.valueChange(value);
     }
 
   }
@@ -55,8 +55,10 @@ export class Nepali extends Component {
   }
 
   changeHandler(event){
-    this.setState({ value: event.target.value });
-    this.props.valueChange(event.target.value);
+    console.log(event.target.value);
+    const value = event.target.value;
+    this.setState({ value });
+    this.props.valueChange && this.props.valueChange(value);
   }
 
   render() {
@@ -65,11 +67,9 @@ export class Nepali extends Component {
     return inputType === 'textarea' ? (
       <textarea
         {...props}
-        onChange={(e) => {
-          console.log(e.target.value)
-        }}
+        onChange={this.changeHandler.bind(this)}
         onKeyDown={this.calculate.bind(this)}
-        value={this.state.value} ></textarea>
+        value={this.state.value} />
     ) : (
         <input
           {...props}
