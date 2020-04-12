@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { mappingFunction } from './nepali-mapping';
 
+const KEYCODE = {
+  START_ASCII_CODE: 32,
+  END_ASCII_CODE: 125
+}
+
 export class Nepali extends Component {
   constructor(props) {
     super(props);
@@ -9,34 +14,49 @@ export class Nepali extends Component {
     };
   }
 
-  calculate(e) {
+  calculate(event) {
+    event.persist();
+    let keyCode = event.key.length === 1 ? event.key.charCodeAt(0): -1;
+    const cursorStart = event.target.selectionStart;
+    const cursorEnd = event.target.selectionEnd;
 
-    let value = "";
-    
-    if (this.state.value !== e.target.value) {
-      for (let c of e.target.value) {
-        try {
-          const conv_char = mappingFunction[this.props.funcname](c.charCodeAt(0));
-          value += conv_char || c;
-        } catch (e) {
-          const conv_char = mappingFunction.unicodify(c.charCodeAt(0));
-          value += conv_char || c;
-        }
+    if(event.ctrlKey || event.altKey)
+      return;
 
+    // for ASCII Characters mapping
+    if(keyCode >= KEYCODE.START_ASCII_CODE && keyCode <= KEYCODE.END_ASCII_CODE){
+      let convChar;
+      try{
+        convChar = mappingFunction[this.props.funcname](keyCode);
+      }catch(e){
+        convChar = String.fromCharCode(keyCode);
       }
+      const oldValue = this.state.value;
+      const partA = oldValue.substring(0, cursorStart) || "";
+      const partB = oldValue.substring(cursorEnd, oldValue.length) || "";
+  
+      const value = partA + convChar + partB;
+  
       this.setState({ value });
-      this.adjustCursor(e.target);
-      this.props.valueChange && this.props.valueChange(e, value);
+      this.adjustCursor(event);
+      event.preventDefault();
+      this.props.valueChange(value);
     }
+
   }
 
   // don't override event instead let event play and then 
   // set the selection range after 10ms, bit hacky but works
-  adjustCursor(inputRef) {
-    const selectionStart = inputRef.selectionStart;
+  adjustCursor( {target} ) {
+    const selectionStart = target.selectionStart;
     setTimeout(() => {
-      inputRef.setSelectionRange(selectionStart, selectionStart);
+      target.setSelectionRange(selectionStart+1, selectionStart+1);
     }, 10);
+  }
+
+  changeHandler(event){
+    this.setState({ value: event.target.value });
+    this.props.valueChange(event.target.value);
   }
 
   render() {
@@ -45,12 +65,16 @@ export class Nepali extends Component {
     return inputType === 'textarea' ? (
       <textarea
         {...props}
-        onChange={this.calculate.bind(this)}
+        onChange={(e) => {
+          console.log(e.target.value)
+        }}
+        onKeyDown={this.calculate.bind(this)}
         value={this.state.value} ></textarea>
     ) : (
         <input
           {...props}
-          onChange={this.calculate.bind(this)}
+          onChange={this.changeHandler.bind(this)}
+          onKeyDown={this.calculate.bind(this)}
           value={this.state.value}
         />
       );

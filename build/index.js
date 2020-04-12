@@ -81,7 +81,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var unicode = [' ', // SPACE
 '!', // ! -> !
-'"', // " -> "
+'\u0953', // ' -> '
 '#', // # -> #
 '$', // $ -> $
 '%', // % -> %
@@ -95,7 +95,6 @@ var unicode = [' ', // SPACE
 '-', // - -> -
 '\u0964', // . -> ।
 '\u094D', // / -> ्
-
 '\u0966', // 0 -> ०
 '\u0967', // 1 -> १
 '\u0968', // 2 -> २
@@ -106,16 +105,14 @@ var unicode = [' ', // SPACE
 '\u096D', // 7 -> ७
 '\u096E', // 8 -> ८
 '\u096F', // 9 -> ९
-
-';', // ; -> ;
 ':', // : -> :
+';', // ; -> ;
 '\u0919', // < -> ङ
 '\u200D', // = -> ZWJ
-'\u0965', // > -> ॥
+'.', // > -> .
 '?', // ? -> ?
 '@', // @ -> @
-
-'\u0906', // A -> आ 65
+'\u0906', // A -> आ
 '\u092D', // B -> भ
 '\u091A', // C -> च
 '\u0927', // D -> ध
@@ -140,16 +137,14 @@ var unicode = [' ', // SPACE
 '\u0914', // W -> औ
 '\u0922', // X -> ढ
 '\u091E', // Y -> ञ
-'\u090B', // Z -> ऋ 90
-
+'\u090B', // Z -> ऋ
 '\u0907', // [ -> इ
 '\u0950', // \ -> ॐ
 '\u090F', // ] -> ए
 '^', // ^ -> ^
-'\u0952', // _ ->"॒"
+'\u0952', // _ -> ॒
 '\u093D', // ` -> ऽ
-
-'\u093E', // a -> ा  97
+'\u093E', // a -> ा
 '\u092C', // b -> ब
 '\u091B', // c -> छ
 '\u0926', // d -> द
@@ -174,12 +169,11 @@ var unicode = [' ', // SPACE
 '\u094C', // w -> ौ
 '\u0921', // x -> ड
 '\u092F', // y -> य
-'\u0937', // z -> ष 122
-
+'\u0937', // z -> ष
 '\u0908', // { -> ई
 '\u0903', // | -> ः
 '\u0910', // } -> ऐ
-'\u093C' // ~ -> "़"
+'\u093C' // ~ -> ़
 ];
 
 var preeti = [' ', // [space]
@@ -342,6 +336,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var KEYCODE = {
+  START_ASCII_CODE: 32,
+  END_ASCII_CODE: 125
+};
+
 var Nepali = exports.Nepali = function (_Component) {
   _inherits(Nepali, _Component);
 
@@ -358,46 +357,31 @@ var Nepali = exports.Nepali = function (_Component) {
 
   _createClass(Nepali, [{
     key: 'calculate',
-    value: function calculate(e) {
+    value: function calculate(event) {
+      event.persist();
+      var keyCode = event.key.length === 1 ? event.key.charCodeAt(0) : -1;
+      var cursorStart = event.target.selectionStart;
+      var cursorEnd = event.target.selectionEnd;
 
-      var value = '';
+      if (event.ctrlKey || event.altKey) return;
 
-      if (this.state.value !== e.target.value) {
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
+      // for ASCII Characters mapping
+      if (keyCode >= KEYCODE.START_ASCII_CODE && keyCode <= KEYCODE.END_ASCII_CODE) {
+        var convChar = void 0;
         try {
-          for (var _iterator = e.target.value[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var c = _step.value;
-
-            try {
-              var conv_char = _nepaliMapping.mappingFunction[this.props.funcname](c.charCodeAt(0));
-              value += conv_char || c;
-            } catch (e) {
-              var _conv_char = _nepaliMapping.mappingFunction.unicodify(c.charCodeAt(0));
-              value += _conv_char || c;
-            }
-
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
-          }
+          convChar = _nepaliMapping.mappingFunction[this.props.funcname](keyCode);
+        } catch (e) {
+          convChar = String.fromCharCode(keyCode);
         }
+        var oldValue = this.state.value;
+        var partA = oldValue.substring(0, cursorStart) || "";
+        var partB = oldValue.substring(cursorEnd, oldValue.length) || "";
+
+        var value = partA + convChar + partB;
 
         this.setState({ value: value });
-        this.adjustCursor(e.target);
-        this.props.valueChange && this.props.valueChange(e, value);
+        this.adjustCursor(event);
+        event.preventDefault();
       }
     }
 
@@ -406,28 +390,37 @@ var Nepali = exports.Nepali = function (_Component) {
 
   }, {
     key: 'adjustCursor',
-    value: function adjustCursor(inputRef) {
-      var selectionStart = inputRef.selectionStart;
+    value: function adjustCursor(_ref) {
+      var target = _ref.target;
+
+      var selectionStart = target.selectionStart;
       setTimeout(function () {
-        inputRef.setSelectionRange(selectionStart, selectionStart);
+        target.setSelectionRange(selectionStart + 1, selectionStart + 1);
       }, 10);
+    }
+  }, {
+    key: 'changeHandler',
+    value: function changeHandler(event) {
+      this.setState({ value: event.target.value });
     }
   }, {
     key: 'render',
     value: function render() {
-
       var _props = this.props,
           inputType = _props.inputType,
           initialValue = _props.initialValue,
           props = _objectWithoutProperties(_props, ['inputType', 'initialValue']);
 
       return inputType === 'textarea' ? _react2.default.createElement('textarea', _extends({}, props, {
-        onChange: this.calculate.bind(this),
+        onChange: function onChange(e) {
+          console.log(e.target.value);
+        },
+        onKeyDown: this.calculate.bind(this),
         value: this.state.value })) : _react2.default.createElement('input', _extends({}, props, {
-        onChange: this.calculate.bind(this),
+        onChange: this.changeHandler.bind(this),
+        onKeyDown: this.calculate.bind(this),
         value: this.state.value
       }));
-
     }
   }]);
 
