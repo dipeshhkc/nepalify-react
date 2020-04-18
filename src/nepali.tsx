@@ -23,6 +23,7 @@ interface INepaliState {
  * 
  * Props are:
  * - `funcname`  String
+ * - `value` String
  * - `valueChange`  (evt, value) => {}
  * - `inputType` String (`textarea`/`text`)
  * - `initialValue` String
