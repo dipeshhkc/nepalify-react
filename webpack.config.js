@@ -1,6 +1,10 @@
 var path = require('path');
 module.exports = {
-  entry: './src/nepali.js',
+  mode: 'production',
+  entry: './src/index.ts',
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js' ]
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'index.js',
@@ -18,6 +22,11 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       }
     ]
   },
