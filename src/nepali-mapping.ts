@@ -200,19 +200,48 @@ let preeti = [
 ];
 
 // Return the unicode of the key passed
-function mapper(keyCode, array) {
+function mapper(keyCode: number, array: Array<string>): string {
   return array[keyCode - 32];
 }
 
-// Wrapper function for the keymap function
-window.unicodify = keyCode => {
+/**
+ * Wrapper function for keymap function for unicode mapping 
+ * @param keyCode number
+ * @returns string
+ */
+const unicodify = (keyCode: number): string => {
   return mapper(keyCode, unicode);
 };
-window.preetify = keyCode => {
+
+/**
+ * Wrapper function for keymap function for traditional mapping 
+ * @param keyCode number
+ * @returns string
+ */
+const preetify = (keyCode: number): string => {
   return mapper(keyCode, preeti);
 };
 
-export const mappingFunction = {
-  unicodify: keyCode => mapper(keyCode, unicode),
-  preetify: keyCode => mapper(keyCode, preeti)
+
+const mappingTypes = {
+  unicodify: "unicodify",
+  prettify: "prettify"
+}
+
+
+/**
+ * get the mapping function according to function name `mappingTypes`
+ * @param funcName string
+ */
+const mappingFunction = (funcName: string) => {
+  if(funcName === mappingTypes.unicodify)
+    return unicodify
+  else if(funcName === mappingTypes.prettify)
+    return preetify
+}
+
+export {
+  unicodify,
+  preetify,
+  mappingFunction
 }

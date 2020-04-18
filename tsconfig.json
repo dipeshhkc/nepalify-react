@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "outDir": "build",
+        "esModuleInterop": true,
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "jsx": "react",
+        "declaration": true,
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "dist",
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
