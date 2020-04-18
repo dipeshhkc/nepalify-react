@@ -1,5 +1,8 @@
 # Nepalify-React
-React library to key map to preeti or unicode. This library provides an `<input type ="text">` input field which converts preeti or unicode typing into nepali texts. Click [here]() for preeti keyboard layout and click [here]() for unicode keyboard layout. The input and output from the library can be seen in the figure below. 
+[![npm version](https://badge.fury.io/js/nepalify-react.svg)](https://badge.fury.io/js/nepalify-react) [![GitHub contributors](https://img.shields.io/github/contributors/dipesh429/nepalify-react.svg)](https://GitHub.com/dipesh429/nepalify-react/graphs/contributors/)
+
+React library to key map to preeti or unicode. This library provides an `<input type ="text">` input field which converts preeti or unicode typing into nepali texts. Click [here]() for preeti keyboard layout and click [here]() for unicode keyboard layout. The input and output from the library can be seen in the figure below.
+
 
 ![Loading1](https://raw.githubusercontent.com/dipesh429/Nepalify-React/master/screenshot/unicode1.png)
 ![Loading2](https://raw.githubusercontent.com/dipesh429/Nepalify-React/master/screenshot/unicode2.png)
@@ -26,12 +29,16 @@ export class App extends Component {
 ```
 
 #### API Details:
-| Props          | Value                                     | Default      | Description                                                                                |
-|----------------|-------------------------------------------|--------------|--------------------------------------------------------------------------------------------|
-| `funcname`     | `preetify` or `unicodify`                 | `unicodify`  | Which type of key mapping to use. Traditional Unicode mapping or Romanized Unicode Mapping |
-| `valueChange`  | callback function. `(event, value) => {}` | `null`       | callback function to call instead of react's `onChange` function                           |
-| `inputType`    | `textarea` or `text`                      | `text`       | type of the input field to apply react nepalify for                                        |
-| `initialValue` | String                                    | Empty String | Set `intialValue` of input field.                                                          |
+
+**Nepalify Component**  `import Nepalify from 'nepalify-react'`
+
+| Props | Value | Default | Description |
+| --- | --- | --- | --- |
+| `funcname`  | `preetify` or `unicodify` | `unicodify` | Which type of key mapping to use. Traditional Unicode mapping or Romanized Unicode Mapping |
+| `valueChange`  | callback function. `(event, value) => {}` | `null` | callback function to call instead of react's `onChange` function | 
+| `inputType` | `textarea` or `text` | `text` | type of the input field to apply react nepalify for |
+| `initialValue` | String | Empty String | Set `intialValue` of input field. |
+| `value` | String | Empty String | To be used as controlled input element in combination with `valueChange` |
 
 #### Note:
 You can add other props as per your requirements except given in `API` which will be passed to underlying input element. 
