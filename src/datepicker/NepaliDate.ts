@@ -113,17 +113,25 @@ class NepaliDate {
     format = (formatStr: string, type: "en" | "ne" = "en"): string => {
         let formattedString = formatStr.replace(/\{[^\{\}]*\}/g, (val) => {
             val = val.substr(1, val.length - 2);
-            let [value, padding] = val.split("|");
+            let [value, padding, fillString] = val.split("|");
             if(this.hasKey(this.formatKeyMap, value)){
                 const key = this.formatKeyMap[value] as keyof INepaliDateFormat;
                 const adBsObject = this.getADBSObject();
-                return adBsObject[type][key];
+                const defaultPadString = (type === "ne" ? '०': '0');
+                return adBsObject[type][key].padStart(Number(padding) || 0, fillString || defaultPadString);
             }
             return val;
         })
         return formattedString;
     }
 
+    /**
+     * Default format the string.
+     * The format used for this function is `{y}/{m|2}/{d|2}`
+     */
+    toDefaultFormat = (type: "en"| "ne" = "en") => {
+        return this.format('{y}/{m|2}/{d|2}', type);
+    }
 
 }
 

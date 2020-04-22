@@ -9,6 +9,10 @@
         "sourceMap": true,
         "jsx": "react",
         "declaration": true,
+        "lib": [
+            "es2017",
+            "DOM"
+        ]
     },
     "include": [
         "src/**/*"

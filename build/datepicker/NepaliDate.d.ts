@@ -60,6 +60,11 @@ declare class NepaliDate {
      * Format the date
      */
     format: (formatStr: string, type?: "en" | "ne") => string;
+    /**
+     * Default format the string.
+     * The format used for this function is `{y}/{m|2}/{d|2}`
+     */
+    toDefaultFormat: (type?: "en" | "ne") => string;
 }
 export default NepaliDate;
 export { INepaliDateFormat };
