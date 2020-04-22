@@ -19,16 +19,7 @@ interface INepaliDateFormat {
 class NepaliDate {
     
 
-    private en: INepaliDateFormat;
-
-    private ne: INepaliDateFormat;
-
-    private dateObject: {
-        en: INepaliDateFormat,
-        ne: INepaliDateFormat
-    };
-
-    formatKeyMap = {
+    private formatKeyMap = {
         'y': 'year',
         'm': 'month',
         'd': 'day',
@@ -40,12 +31,13 @@ class NepaliDate {
         'tdm': 'totalDaysInMonth'
     }
 
-    adDateStr: string;
+    private adDateStr: string;
 
-    adBsObject: {
+    private adBsObject: {
         en: INepaliDateFormat,
         ne: INepaliDateFormat
     }
+    private javascriptDate: Date;
 
     /**
      * 
@@ -83,9 +75,12 @@ class NepaliDate {
      * @returns {Date} javascript date object
      */
     getDateObject = () => {
-        const [year, month, day] = this.adDateStr.split("/").map(d => Number(d));
-        const javascriptDate = new Date(year, month - 1, day);
-        return javascriptDate;
+        if(!this.javascriptDate){
+            const [year, month, day] = this.adDateStr.split("/").map(d => Number(d));
+            this.javascriptDate = new Date(year, month - 1, day);
+            return this.javascriptDate;
+        }
+        return this.javascriptDate;
     }
 
     /**
@@ -108,7 +103,22 @@ class NepaliDate {
     }
 
     /**
-     * Format the date
+     * @param formatStr {string} - format string used to define how to format
+     * 
+     * ```
+     *  'y': 'year',
+     *  'm': 'month',
+     *  'd': 'day',
+     *  'M': 'strMonth',
+     *  'sM': 'strShortMonth',
+     *  'w': 'dayOfWeek',
+     *  'W': 'strDayOfWeek',
+     *  'sW': 'strShortDayOfWeek',
+     *  'tdm': 'totalDaysInMonth'
+     * ```
+     * 
+     * Default formating looks like `{y}/{m|2}/{d|2}` where pipe symbol is used for giving padding
+     * to output string 
      */
     format = (formatStr: string, type: "en" | "ne" = "en"): string => {
         let formattedString = formatStr.replace(/\{[^\{\}]*\}/g, (val) => {

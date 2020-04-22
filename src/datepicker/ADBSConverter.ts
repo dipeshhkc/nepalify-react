@@ -1,10 +1,5 @@
-/**
- * Convert AD to BS or BS to AD 
- * Code ported to typescript from
- * https://github.com/techgaun/ad-bs-converter
- */
 
- // TODO ( add subtract difference formating ) features for converter
+
 
 import { CalendarData } from "./CalendarData"
 import { CalendarUtils } from "."
@@ -38,6 +33,11 @@ export const EnglishDay = {
 
 type CalendarDataKeys = keyof typeof CalendarData;
 
+/**
+ * Convert (AD to BS) or (BS to AD) 
+ * Code ported to typescript from
+ * https://github.com/techgaun/ad-bs-converter
+ */
 export default class ADBSConverter {
 
     public static NepaliMonth = NepaliMonth;

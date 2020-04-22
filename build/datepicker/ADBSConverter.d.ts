@@ -1,8 +1,3 @@
-/**
- * Convert AD to BS or BS to AD
- * Code ported to typescript from
- * https://github.com/techgaun/ad-bs-converter
- */
 export declare const NepaliMonth: {
     name: string[];
     shortName: string[];
@@ -24,6 +19,11 @@ export declare const EnglishDay: {
     name: string[];
     shortName: string[];
 };
+/**
+ * Convert (AD to BS) or (BS to AD)
+ * Code ported to typescript from
+ * https://github.com/techgaun/ad-bs-converter
+ */
 export default class ADBSConverter {
     static NepaliMonth: {
         name: string[];

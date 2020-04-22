@@ -14,25 +14,10 @@ interface INepaliDateFormat {
  * to the date object like formatting.
  */
 declare class NepaliDate {
-    private en;
-    private ne;
-    private dateObject;
-    formatKeyMap: {
-        y: string;
-        m: string;
-        d: string;
-        M: string;
-        sM: string;
-        w: string;
-        W: string;
-        sW: string;
-        tdm: string;
-    };
-    adDateStr: string;
-    adBsObject: {
-        en: INepaliDateFormat;
-        ne: INepaliDateFormat;
-    };
+    private formatKeyMap;
+    private adDateStr;
+    private adBsObject;
+    private javascriptDate;
     /**
      *
      * @param bsDate {string} in format `yyyy/mm/dd`
@@ -57,7 +42,22 @@ declare class NepaliDate {
      */
     private hasKey;
     /**
-     * Format the date
+     * @param formatStr {string} - format string used to define how to format
+     *
+     * ```
+     *  'y': 'year',
+     *  'm': 'month',
+     *  'd': 'day',
+     *  'M': 'strMonth',
+     *  'sM': 'strShortMonth',
+     *  'w': 'dayOfWeek',
+     *  'W': 'strDayOfWeek',
+     *  'sW': 'strShortDayOfWeek',
+     *  'tdm': 'totalDaysInMonth'
+     * ```
+     *
+     * Default formating looks like `{y}/{m|2}/{d|2}` where pipe symbol is used for giving padding
+     * to output string
      */
     format: (formatStr: string, type?: "en" | "ne") => string;
     /**
