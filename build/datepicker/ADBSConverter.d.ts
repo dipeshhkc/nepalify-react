@@ -51,6 +51,7 @@ export default class ADBSConverter {
     private static base_bs;
     /**
      * ad2bs conversion
+     * @param {string} adDate format is `yyyy/mm/dd`
      */
     static ad2bs: (adDate: string) => {
         ne: {
@@ -62,7 +63,6 @@ export default class ADBSConverter {
             dayOfWeek: string;
             strDayOfWeek: string;
             strShortDayOfWeek: string;
-            strMinDayOfWeek: string;
             totalDaysInMonth: string;
         };
         en: {
@@ -79,6 +79,7 @@ export default class ADBSConverter {
     };
     /**
      * bs2ad conversion
+     * @param {string} bsDate format is `yyyy/mm/dd`
      */
     static bs2ad: (bsDate: string) => {
         year: string;

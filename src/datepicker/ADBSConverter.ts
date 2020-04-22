@@ -53,6 +53,7 @@ export default class ADBSConverter {
 
     /**
      * ad2bs conversion
+     * @param {string} adDate format is `yyyy/mm/dd`
      */
     static ad2bs = (adDate: string) => {
         const dayData = ADBSConverter.countADDays(adDate);
@@ -96,7 +97,6 @@ export default class ADBSConverter {
                 dayOfWeek: CalendarUtils.getNepaliNumber(dayData.dateInAd.getDay().toString()),
                 strDayOfWeek: NepaliDay.name[dayData.dateInAd.getDay()],
                 strShortDayOfWeek: NepaliDay.shortname[dayData.dateInAd.getDay()],
-                strMinDayOfWeek: NepaliDay.minName[dayData.dateInAd.getDay()],
                 totalDaysInMonth: CalendarUtils.getNepaliNumber(CalendarData[bsDate.year.toString() as CalendarDataKeys][bsDate.month - 1].toString())
             },
             en: {
@@ -117,6 +117,7 @@ export default class ADBSConverter {
 
     /**
      * bs2ad conversion
+     * @param {string} bsDate format is `yyyy/mm/dd`
      */
     public static bs2ad = (bsDate: string) => {
         const dayCount = ADBSConverter.countBSDays(bsDate);
