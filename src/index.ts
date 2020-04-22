@@ -1,8 +1,10 @@
 import Nepali from "./nepali";
-import {CalendarUtils, ADBSConverter} from './datepicker';
+import {CalendarUtils, ADBSConverter, INepaliDateFormat, NepaliDate} from './datepicker';
 
 export default Nepali;
 export {
     CalendarUtils,
-    ADBSConverter
+    ADBSConverter,
+    NepaliDate,
+    INepaliDateFormat
 }
