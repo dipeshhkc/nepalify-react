@@ -9,7 +9,7 @@ interface INepaliDateFormat {
     dayOfWeek: string,
     strDayOfWeek: string,
     strShortDayOfWeek: string,
-    totalDaysInMonth: string
+    totalDaysInMonth ?: string
 }
 
 /**

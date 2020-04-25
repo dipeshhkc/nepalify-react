@@ -133,8 +133,8 @@ export default class ADBSConverter {
             month: (month + 1).toString(),
             strMonth: EnglishMonth.name[month],
             strShortMonth: EnglishMonth.shortName[month],
-            day: date.getDate(),
-            dayOfWeek: dayOfWeek,
+            day: date.getDate().toString(),
+            dayOfWeek: dayOfWeek.toString(),
             strDayOfWeek: EnglishDay.name[dayOfWeek],
             strShortDayOfWeek: EnglishDay.shortName[dayOfWeek]
         }
