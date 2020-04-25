@@ -86,8 +86,8 @@ export default class ADBSConverter {
         month: string;
         strMonth: string;
         strShortMonth: string;
-        day: number;
-        dayOfWeek: number;
+        day: string;
+        dayOfWeek: string;
         strDayOfWeek: string;
         strShortDayOfWeek: string;
     };
