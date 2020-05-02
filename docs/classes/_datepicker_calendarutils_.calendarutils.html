@@ -92,6 +92,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_datepicker_calendarutils_.calendarutils.html#generatemonthdays" class="tsd-kind-icon">generate<wbr>Month<wbr>Days</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_datepicker_calendarutils_.calendarutils.html#generateweeklydays" class="tsd-kind-icon">generate<wbr>Weekly<wbr>Days</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_datepicker_calendarutils_.calendarutils.html#getnepalinumber" class="tsd-kind-icon">get<wbr>Nepali<wbr>Number</a></li>
 							</ul>
 						</section>
@@ -104,13 +105,13 @@
 					<a name="generatemonthdays" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> generate<wbr>Month<wbr>Days</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">generate<wbr>Month<wbr>Days<span class="tsd-signature-symbol">(</span>date<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, format<span class="tsd-signature-symbol">: </span><a href="../modules/_datepicker_calendarutils_.html#nepalidatetypes" class="tsd-signature-type">NepaliDateTypes</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>Month<wbr>Days<span class="tsd-signature-symbol">(</span>date<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, format<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">"ad"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"bs"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_datepicker_nepalidate_.nepalidate.html" class="tsd-signature-type">NepaliDate</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dipeshdulal/nepalify-react/blob/42be240/src/datepicker/CalendarUtils.ts#L28">src/datepicker/CalendarUtils.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/dipeshdulal/nepalify-react/blob/6127bf9/src/datepicker/CalendarUtils.ts#L30">src/datepicker/CalendarUtils.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -127,12 +128,51 @@
 									</div>
 								</li>
 								<li>
-									<h5>format: <a href="../modules/_datepicker_calendarutils_.html#nepalidatetypes" class="tsd-signature-type">NepaliDateTypes</a></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> format: <span class="tsd-signature-type">"ad"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"bs"</span><span class="tsd-signature-symbol"> = &quot;ad&quot;</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_datepicker_nepalidate_.nepalidate.html" class="tsd-signature-type">NepaliDate</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="generateweeklydays" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> generate<wbr>Weekly<wbr>Days</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>Weekly<wbr>Days<span class="tsd-signature-symbol">(</span>date<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, format<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">"ad"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"bs"</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_datepicker_nepalidate_.nepalidate.html" class="tsd-signature-type">NepaliDate</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dipeshdulal/nepalify-react/blob/6127bf9/src/datepicker/CalendarUtils.ts#L57">src/datepicker/CalendarUtils.ts:57</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get days in month separated weekly.
+										Some week days not present in current month is given as <code>null</code> so use
+									cautiously.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>date: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>string <code>yyyy/mm/dd</code> | &#39;yyyy/mm&#39;</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> format: <span class="tsd-signature-type">"ad"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"bs"</span><span class="tsd-signature-symbol"> = &quot;ad&quot;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>string <code>ad|bs</code></p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_datepicker_nepalidate_.nepalidate.html" class="tsd-signature-type">NepaliDate</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -146,7 +186,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dipeshdulal/nepalify-react/blob/42be240/src/datepicker/CalendarUtils.ts#L36">src/datepicker/CalendarUtils.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/dipeshdulal/nepalify-react/blob/6127bf9/src/datepicker/CalendarUtils.ts#L90">src/datepicker/CalendarUtils.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -201,6 +241,9 @@
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_datepicker_calendarutils_.calendarutils.html#generatemonthdays" class="tsd-kind-icon">generate<wbr>Month<wbr>Days</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_datepicker_calendarutils_.calendarutils.html#generateweeklydays" class="tsd-kind-icon">generate<wbr>Weekly<wbr>Days</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_datepicker_calendarutils_.calendarutils.html#getnepalinumber" class="tsd-kind-icon">get<wbr>Nepali<wbr>Number</a>
