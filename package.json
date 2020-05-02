@@ -1,6 +1,6 @@
 {
   "name": "nepalify-react",
-  "version": "1.0.4",
+  "version": "1.0.8",
   "description": "React Component : Key mapping to Preeti font and Unicode",
   "main": "build/index.js",
   "scripts": {
